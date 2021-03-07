@@ -10,6 +10,7 @@ class Compradores(AbstractUser):
     longitud=models.CharField('Longitud',max_length=255)
     latitud=models.CharField('Latitud',max_length=255)
     estado_geo=models.CharField('Estado geo',max_length=255)
+    REQUIRED_FIELDS=["nombre","apellido","direccion"]
 
     class Meta:
         verbose_name="Comprador"
