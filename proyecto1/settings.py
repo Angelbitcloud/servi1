@@ -18,9 +18,9 @@ from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv(filename="../../.env"))
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 #STATICFILES_DIRS = (   os.path.join(BASE_DIR, 'static'),)
 
 
@@ -33,7 +33,7 @@ SECRET_KEY = 'ken)m6er)#r5+4#9mpi84u3v(__@v2v#dzv_t=&(0)ys37c^!f'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["proyecto1servi.herokuapp.com","localhost"]
 
 # Application definition
 
@@ -127,3 +127,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media')
