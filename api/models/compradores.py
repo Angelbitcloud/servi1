@@ -11,6 +11,8 @@ class Compradores(AbstractUser):
     latitud=models.CharField('Latitud',max_length=255)
     estado_geo=models.CharField('Estado geo',max_length=255)
     REQUIRED_FIELDS=["nombre","apellido","direccion"]
+    is_deleted=models.BooleanField(default=False)
+    
 
     class Meta:
         verbose_name="Comprador"
@@ -18,3 +20,5 @@ class Compradores(AbstractUser):
 
     def __str__(self):
         return "{}. {} {}".format(self.pk,self.nombre,self.apellido)
+
+    
