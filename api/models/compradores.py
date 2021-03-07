@@ -10,7 +10,7 @@ class Compradores(AbstractUser):
     longitud=models.CharField('Longitud',max_length=255,null=True,blank=True)
     latitud=models.CharField('Latitud',max_length=255,null=True,blank=True)
     estado_geo=models.CharField('Estado geo',max_length=255,null=True,blank=True)
-    REQUIRED_FIELDS=["nombre","apellido","direccion"]
+    REQUIRED_FIELDS=["nombre","apellido","direccion","ciudad"]
     is_deleted=models.BooleanField(default=False)
 
 
