@@ -1,0 +1,1 @@
+web: gunicorn proyecto1.wsgi --timeout 30 --graceful-timeout 30 --keep-alive 5 --log-file -
