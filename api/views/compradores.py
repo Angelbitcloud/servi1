@@ -29,13 +29,13 @@ class CompradoresApi(APIView):
         return Response({'ID':comprador.pk},status=status.HTTP_201_CREATED)
 
     def get(self,request):
-        compradores=Compradores.objects.filter(is_deleted=False).values('pk','nombre','apellido','ciudad','direccion','latitud','longitud')
+        compradores=Compradores.objects.filter(is_deleted=False).values('pk','nombre','apellido','ciudad','direccion','latitud','longitud','email')
         return Response(compradores,status=status.HTTP_200_OK)
 
 #clase para manejor un solo registro
 class SpecificCompradoresApi(APIView):
     def get(self,request,*args,**kwargs):
-        comprador=Compradores.objects.filter(pk=kwargs['id'],is_deleted=False).values('pk','nombre','apellido','ciudad','direccion','latitud','longitud').first()
+        comprador=Compradores.objects.filter(pk=kwargs['id'],is_deleted=False).values('pk','nombre','apellido','ciudad','direccion','latitud','longitud','email').first()
         return Response(comprador,status=status.HTTP_200_OK)
 
     def delete(self,request,*args,**kwargs):
