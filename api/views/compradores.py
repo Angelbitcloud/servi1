@@ -20,8 +20,10 @@ class CompradoresApi(APIView):
             return Response({'data':validator.errors},status=status.HTTP_400_BAD_REQUEST)
         
         request.data['username']=request.data['email']
-
         request.data['password']="123456789"
+
+        if Compradores.objects.filter(username=request.data['email']):
+            return Response({'data':'usuario con email ya existente'},status=status.HTTP_409_CONFLICT)
 
         comprador=Compradores.objects.create(**request.data)
         return Response({'ID':comprador.pk},status=status.HTTP_201_CREATED)
