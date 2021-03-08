@@ -2,6 +2,8 @@ from cerberus import Validator
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from django.contrib.auth.hashers import make_password
+
 
 from ..models.compradores import Compradores
 
@@ -12,9 +14,14 @@ class CompradoresApi(APIView):
             'apellido':{'required':True,'type':'string','empty':False},
             'direccion':{'required':True,'type':'string','empty':False},
             'ciudad':{'required':True,'type':'string','empty':False},
+            'email':{'required':True,'type':'string','empty':False},
         })
         if not validator.validate(request.data):
             return Response({'data':validator.errors},status=status.HTTP_400_BAD_REQUEST)
+        
+        request.data['username']=request.data['email']
+
+        request.data['password']="123456789"
 
         comprador=Compradores.objects.create(**request.data)
         return Response({'ID':comprador.pk},status=status.HTTP_201_CREATED)
